@@ -21,16 +21,47 @@ const Contactos =({navigation})=>{
           }
         })();
       }, []);
+      const renderItem = ({ item }) => {
+        console.log(item.contactType)
+        return <TouchableOpacity style={styles.item} 
+          >
+           {item.firstName  && <View>
+          <Text style={styles.title}>{item.firstName}</Text>
+          <Text style={styles.title}>{item.lastName}</Text>
+          <Text style={styles.title}>{item.phoneNumbers}</Text>
+           </View>}
+        </TouchableOpacity>
+       
+      };
 
+    if (contactos.length === 0) return <View><Text>Cargando...</Text></View>
 
     return (
     <View >
-      <Text>Contacts Module Example {contactos[0].firstName}</Text>
+
+        <FlatList
+        data={contactos}
+        renderItem={renderItem}
+        keyExtractor={(data) => data.id}
+      />
     </View>
         
     );}
    
-    
-    
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        marginTop: StatusBar.currentHeight || 0,
+      },
+      item: {
+
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+      },
+      title: {
+        fontSize: 15,
+      }
+    });
     
     export default Contactos
