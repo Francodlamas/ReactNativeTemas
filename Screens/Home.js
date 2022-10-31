@@ -1,9 +1,60 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, Image , View, TextInput, FlatList, StatusBar, SafeAreaView, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, Image , View, TextInput, FlatList, StatusBar, SafeAreaView, TouchableOpacity, Button, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Accelerometer } from 'expo-sensors';
+
 
 
 const Home =({navigation})=>{
+    const [numero,setNumero]=useState(5491128716746);
+    const [data, setData] = useState({
+        x: 0,
+        y: 0,
+        z: 0,
+      });
+      const [subscription, setSubscription] = useState(null);
+    
+      const _slow = () => {
+        Accelerometer.setUpdateInterval(1000);
+        
+      };
+    
+      const _fast = () => {
+        Accelerometer.setUpdateInterval(16);
+        
+      };
+    
+      const _subscribe = () => {
+        setSubscription(
+          Accelerometer.addListener(accelerometerData => {
+            setData(accelerometerData);
+      
+           
+          })
+        );
+      };
+    
+      const _unsubscribe = () => {
+        subscription && subscription.remove();
+        setSubscription(null);
+      };
+    
+      useEffect(() => {
+        _subscribe();
+        return () => _unsubscribe();
+      }, []);
+      
+  const { x, y, z } = data;
+       if(z>2||x>2||y>2){
+            Linking.openURL('whatsapp://send?text=Este es un llamado de emergencia para q tu vengaaaaas&phone='+numero)
+         }
+         const guardarNum = async(numero1) => {
+            setNumero(numero1)
+            
+        }
+
+
+
 
     const Navegar =async()=>{
 
@@ -13,6 +64,10 @@ const Home =({navigation})=>{
     const Navegar2 =async()=>{
 
         navigation.push('Contactos')
+    }
+    const Navegar3 =async()=>{
+
+        navigation.push('videoFav')
     }
 
     
@@ -24,8 +79,11 @@ return (
 
     <Button title="Press Me"style={styles.button} onPress={Navegar}>  </Button>
     <Button title="Press Me"style={styles.button} onPress={Navegar2}>  </Button>
-    <Button title="Press Me"style={styles.button}>  </Button>
-    <Button title="Press Me"style={styles.button}>  </Button>
+    <Button title="Press Me"style={styles.button} onPress={Navegar3}>  </Button>
+
+
+    <Text>Tu numero es {numero}</Text>
+        <TextInput onChangeText={guardarNum} keyboardType = 'numeric' placeholder="Numer de emergencia"></TextInput>
     </View>
 );}
 const styles = StyleSheet.create({
