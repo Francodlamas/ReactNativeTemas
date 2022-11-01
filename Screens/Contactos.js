@@ -14,7 +14,8 @@ const Contactos =({navigation})=>{
           const { status } = await Contacts.requestPermissionsAsync();
           if (status === 'granted') {
             const { data } = await Contacts.getContactsAsync({
-              fields: [Contacts.Fields.Emails],
+              fields: [Contacts.Fields.phoneNumbers],
+
             });
             setContactos(data)
 
@@ -22,13 +23,13 @@ const Contactos =({navigation})=>{
         })();
       }, []);
       const renderItem = ({ item }) => {
-        console.log(item.contactType)
+        console.log(item.Fields)
         return <TouchableOpacity style={styles.item} 
           >
            {item.firstName  && <View>
           <Text style={styles.title}>{item.firstName}</Text>
           <Text style={styles.title}>{item.lastName}</Text>
-          <Text style={styles.title}>{item.phoneNumbers}</Text>
+          <Text style={styles.title}>{item.firstName}</Text>
            </View>}
         </TouchableOpacity>
        
