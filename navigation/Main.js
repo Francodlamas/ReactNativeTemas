@@ -6,6 +6,7 @@ import Home from '../Screens/Home';
 import Hora from '../Screens/Hora';
 import Contactos from '../Screens/Contactos';
 import videoFav from '../Screens/VideoFav';
+import qr from '../Screens/qr';
 
 const Stack = createNativeStackNavigator(); 
 
@@ -29,9 +30,13 @@ const Main = () => {
           name="Contactos"
           component={Contactos}
       /> 
-             <Stack.Screen
+        <Stack.Screen
           name="videoFav"
           component={videoFav}
+      /> 
+         <Stack.Screen
+          name="qr"
+          component={qr}
       /> 
       </Stack.Navigator>
     </NavigationContainer>

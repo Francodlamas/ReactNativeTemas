@@ -6,7 +6,7 @@ import { Accelerometer } from 'expo-sensors';
 
 
 const Home =({navigation})=>{
-    const [numero,setNumero]=useState(5491128716746);
+    const [numero,setNumero]=useState();
     const [data, setData] = useState({
         x: 0,
         y: 0,
@@ -69,7 +69,10 @@ const Home =({navigation})=>{
 
         navigation.push('videoFav')
     }
+    const Navegar4 =async()=>{
 
+      navigation.push('qr')
+  }
     
 
 
@@ -77,10 +80,10 @@ return (
     <View >
     <Text >Elegir Boton</Text>
 
-    <Button title="Press Me"style={styles.button} onPress={Navegar}>  </Button>
+    <Button title="Press Me"style={styles.button} onPress={Navegar}>   </Button>
     <Button title="Press Me"style={styles.button} onPress={Navegar2}>  </Button>
     <Button title="Press Me"style={styles.button} onPress={Navegar3}>  </Button>
-
+    <Button title="Press Me"style={styles.button} onPress={Navegar4}>  </Button>
 
     <Text>Tu numero es {numero}</Text>
         <TextInput onChangeText={guardarNum} keyboardType = 'numeric' placeholder="Numer de emergencia"></TextInput>
