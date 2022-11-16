@@ -33,7 +33,7 @@ return (
     <View  style={styles.container}>
     <Text></Text>
     
-    <TextInput onChangeText={ponerVideo}  placeholder="URL del video"></TextInput>
+    <TextInput onChangeText={ponerVideo} value={video} placeholder="URL del video"></TextInput>
           <Video
         style={styles.video}
         resizeMode="contain"

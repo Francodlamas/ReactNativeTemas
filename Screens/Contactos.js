@@ -27,9 +27,9 @@ const Contactos =({navigation})=>{
         return <TouchableOpacity style={styles.item} 
           >
            {item.firstName  && <View>
-          <Text style={styles.title}>{item.firstName}</Text>
-          <Text style={styles.title}>{item.lastName}</Text>
-          {item.phoneNumbers.map(phone=><Text key={phone.id} style={styles.title}>{phone.number}</Text>)}
+          <Text style={styles.title}>El primer nombre del contacto es {item.firstName}</Text>
+          {item.lastName && <Text style={styles.title}>El ultimo nombre del contacto es {item.lastName}</Text>}
+          {item.phoneNumbers.map(phone=><Text key={phone.id} style={styles.title}>Los numeros del contacto es {phone.number}</Text>)}
           
            </View>}
         </TouchableOpacity>
@@ -40,7 +40,8 @@ const Contactos =({navigation})=>{
 
     return (
     <View >
-
+      <Text></Text>
+        <Text>Lista de tus contactos</Text>
         <FlatList
         data={contactos}
         renderItem={renderItem}

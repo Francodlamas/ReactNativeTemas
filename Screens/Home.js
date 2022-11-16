@@ -78,12 +78,13 @@ const Home =({navigation})=>{
 
 return (
     <View >
-    <Text >Elegir Boton</Text>
+    <Text></Text>
+    <Text >React Native Temas</Text>
 
-    <Button title="Press Me"style={styles.button} onPress={Navegar}>   </Button>
-    <Button title="Press Me"style={styles.button} onPress={Navegar2}>  </Button>
-    <Button title="Press Me"style={styles.button} onPress={Navegar3}>  </Button>
-    <Button title="Press Me"style={styles.button} onPress={Navegar4}>  </Button>
+    <Button title="Hora actual / Temperatura y Clima"style={styles.button} onPress={Navegar}>Clima</Button>
+    <Button title="Contactos"style={styles.button} onPress={Navegar2}>  </Button>
+    <Button title="Video favorito"style={styles.button} onPress={Navegar3}>  </Button>
+    <Button title="About"style={styles.button} onPress={Navegar4}>  </Button>
 
     <Text>Tu numero es {numero}</Text>
         <TextInput onChangeText={guardarNum} keyboardType = 'numeric' placeholder="Numer de emergencia"></TextInput>

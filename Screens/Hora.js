@@ -36,13 +36,15 @@ const Hora =({navigation})=>{
 
     return (
         <View >
+       
+        <Text></Text>
         <Text>El dia y la hora son: {fechaHora}</Text>
       
         <View id="area-nav">
-            <Text>Pide permisos de hubicacion al navegador</Text>
+            
             <Text>{'Ubicacion actual latitud'} : {latitud}</Text>
             <Text >{'Ubicacion actual longitud'} :{longitud }</Text>
-            <Button title="Press Me" onPress={obtenerClima}></Button>
+            <Button title="Obtener clima" onPress={obtenerClima}></Button>
             {clima &&
             <Text>El clima actual de {latitud},{longitud} es de {clima.temp_c} grados</Text>
             }
